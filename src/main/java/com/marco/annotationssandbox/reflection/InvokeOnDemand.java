@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface RunOnStartup {
-    String message();
+public @interface InvokeOnDemand {
+    String message() default "";
 }

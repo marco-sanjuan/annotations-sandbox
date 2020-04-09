@@ -1,4 +1,4 @@
-package com.marco.annotationssandbox.aop;
+package com.marco.annotationssandbox.reflection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -6,18 +6,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LogLapseRunExample implements CommandLineRunner {
+public class RunInvokeOnDemandExample implements CommandLineRunner {
 
     @Autowired
-    private LogLapseUseExample logLapseUseExample;
+    private InvokeOnDemandProcessor processor;
 
     public static void main(String[] args) {
-        SpringApplication.run(LogLapseRunExample.class, args);
+        SpringApplication.run(RunInvokeOnDemandExample.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-
-        logLapseUseExample.exampleMethod();
+        processor.runAnnotatedMethods();
     }
 }

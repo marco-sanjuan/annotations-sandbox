@@ -8,13 +8,12 @@ import org.springframework.stereotype.Component;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.stream;
 
 @Component
-public class RunOnStartupProcessor {
+public class InvokeOnDemandProcessor {
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -23,7 +22,7 @@ public class RunOnStartupProcessor {
         stream(applicationContext.getBeanDefinitionNames())
                 .map(name -> applicationContext.getBean(name))
                 .forEach(bean ->
-                    getMethodsAnnotatedWith(bean.getClass(), RunOnStartup.class)
+                    getMethodsAnnotatedWith(bean.getClass(), InvokeOnDemand.class)
                             .forEach(method -> invoke(bean, method))
                 );
 
